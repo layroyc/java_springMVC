@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>DaZuoye</display-name>
+  <!-- 配置编码过滤器post请求 -->
+  <filter>
+  <filter-name>encode</filter-name>
+  <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+  <!-- 指定编码格式param-name的值必须是encoding -->
+  <init-param>
+   <param-name>encoding</param-name>
+   <param-value>UTF-8</param-value>
+  </init-param>
+  </filter>
+  <filter-mapping>
+   <filter-name>encode</filter-name>
+  <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  
+  <!-- 编写初始化spring工厂的监听 -->
+  <!-- 启动web容器时，自动装配applicationContext.xml的配置信息 -->
+  <listener>
+  <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+  <!-- 配置springmvc的核心入口  servlet -->
+  <servlet>
+  <servlet-name>mvc</servlet-name>
+  <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  <!-- 配置初始化 servlet -->
+  <load-on-startup>0</load-on-startup>
+  </servlet>
+  <!-- 因为mvc-servlet在WEB-INF下放着，不需要指定配置文件的路径-->
+  <servlet-mapping>
+  <servlet-name>mvc</servlet-name>
+  <url-pattern>/</url-pattern>
+  </servlet-mapping>
+</web-app>

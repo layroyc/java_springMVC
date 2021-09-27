@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>springmvc1</display-name>
+	<!-- 编写springmvc的核心入口Servlet -->
+	<servlet>
+		<servlet-name>mvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+
+		<!-- 注意：指定配置文件路径的key必须叫contextConfigLocation -->
+
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:/spring_mvc.xml</param-value>
+		</init-param>
+		<!--配置服务器启动 初始化入口Servlet -->
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<!-- 指定配置文件路径 -->
+
+	<servlet-mapping>
+		<servlet-name>mvc</servlet-name>
+		<!-- / 通配符的意思（*） 表示拦截所有的请求 为什么使用/ ？ 表示来自客户端的请求，都要先经过入口servlet处理 -->
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+</web-app>

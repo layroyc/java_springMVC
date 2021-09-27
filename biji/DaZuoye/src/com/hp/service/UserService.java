@@ -1,0 +1,8 @@
+package com.hp.service;
+
+import com.hp.entity.User;
+
+public interface UserService {
+   //µÇÂ¼
+	public User login(String uname,String upassword);
+}
